@@ -1,0 +1,4 @@
+.skillsInput { 
+  display: flex; 
+  flex-direction: column;
+}

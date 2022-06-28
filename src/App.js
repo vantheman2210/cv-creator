@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'; 
+import './styles/Header.css'; 
+import './styles/Personal.css'; 
+import './styles/Experience.css'; 
+import './styles/Education.css'; 
+import './styles/References.css'; 
+import './styles/Skills.css';
+import Header from './Components/Header'; 
+import Personal from './Components/Personal';
+import Experience from './Components/Experience'; 
+import Education from './Components/Education'; 
+import Skills  from './Components/Skills'; 
+import References from './Components/References';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component { 
+
+  render() {
+  return ( 
+    <main>
+    <div>
+   <Header /> 
+   <Personal /> 
+   <Experience /> 
+   <Education /> 
+   <References /> 
+   <Skills />
+   </div>  
+   <div className="cvOutput">
+    <header></header>
+   </div>
+   </main>
+  )
+  }
 }
 
 export default App;

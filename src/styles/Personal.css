@@ -1,0 +1,4 @@
+.personalInput { 
+  display: flex; 
+  flex-direction: column;
+}

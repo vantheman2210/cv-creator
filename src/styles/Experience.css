@@ -1,0 +1,4 @@
+.experienceInput { 
+  display: flex; 
+  flex-direction: column;
+}

@@ -1,0 +1,4 @@
+.referencesInput { 
+  display: flex; 
+  flex-direction: column;
+}

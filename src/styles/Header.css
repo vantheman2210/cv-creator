@@ -1,0 +1,9 @@
+.header { 
+  display: grid; 
+  grid-template-columns: 1fr 5fr; 
+  justify-items: center;
+} 
+
+.pageName { 
+  font-size: 30px;
+}
