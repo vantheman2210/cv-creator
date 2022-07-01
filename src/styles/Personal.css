@@ -1,4 +1,59 @@
-.personalInput { 
-  display: flex; 
-  flex-direction: column;
+.headerPersonal { 
+  display: grid; 
+ grid-template-rows: 1fr 1fr;
+}
+
+.nameTitle { 
+  display: grid;
+  grid-template-rows: 1fr 1fr; 
+  background-color: gold;
+  padding: 2rem;
+  letter-spacing: 5px; 
+
+}  
+
+.nameTitle > h1 { 
+  margin-bottom: 0;
+}
+
+.nameTitle > h4 { 
+  margin-top: 0; 
+  font-weight: 300;
+} 
+
+.about { 
+  padding: 1rem;  
+  padding-left: 2rem;
+  letter-spacing: 5px; 
+  font-size: 12px; 
+} 
+
+.experience { 
+  display: grid; 
+  grid-template-columns: 1fr 4fr; 
+  padding: 2rem; 
+  letter-spacing: 5px; 
+  font-size: 12px; 
+}  
+
+.years{ 
+  padding-left: 2rem
+}
+
+.position { 
+  display: grid; 
+  grid-template-rows: 2fr 1fr; 
+  margin-bottom: 0;
+} 
+
+.company { 
+  display: grid; 
+  grid-template-rows: 2fr 1fr; 
+  margin-top: 0;
+} 
+
+.skills { 
+  padding: 2rem; 
+  letter-spacing: 5px; 
+  font-size: 12px; 
 }

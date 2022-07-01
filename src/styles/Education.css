@@ -1,4 +1,20 @@
-.educationInput { 
-  display: flex; 
-  flex-direction: column;
+.education { 
+  display: flex ; 
+  flex-direction: column; 
+  height: fit-content; 
+  width: fit-content; 
+}; 
+
+.degree { 
+  height: 3rem; 
+  margin: 0;
+} 
+
+.year {
+  margin: 0;
+}
+
+.university {  
+  height: 3rem;
+  margin: 0; 
 }
