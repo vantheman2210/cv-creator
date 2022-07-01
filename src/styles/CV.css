@@ -1,0 +1,9 @@
+.CV { 
+  height: 595px; 
+  width: 842px;
+}
+
+.header { 
+  display: flex; 
+  flex-direction: column;
+}

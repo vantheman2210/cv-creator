@@ -1,21 +1,23 @@
-import React from "react"; 
+import React from 'react';
 
+class Personal extends React.Component {
+	constructor (props) { 
+		super(props) 
+		console.log(this.props)
+	} 
 
-class Personal extends React.Component { 
-  render()  {  
-    return (
-    <div className="personalInput">  
-      <h1>Personal Information:</h1>
-      <input type="text" placeholder="First Name"></input> 
-      <input type="text" placeholder="Last Name"></input> 
-      <input type="text" placeholder="Title"></input> 
-      <input type="text" placeholder="Address"></input>  
-      <input type="file" accept="image/" placeholder="Address"></input> 
-      <input type="text" placeholder="Phone Number"></input> 
-      <input type="email" placeholder="Email"></input> 
-      <textarea type="text" placeholder="Description"></textarea>
-    </div>
-    )
-  }
+	render () { 
+		return ( 
+			<div>
+				<h3>{this.props.firstName}</h3> 
+				<h3></h3> 
+				<h3></h3> 
+				<h3></h3> 
+				<h3></h3> 
+				<h3></h3> 
+				<h3></h3>
+			</div>
+		)
+	}
 }
 export default Personal;

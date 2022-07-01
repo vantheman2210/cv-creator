@@ -1,13 +1,18 @@
 import React from "react"; 
+import Personal from "./Personal";
 
-class CV extends React.Component { 
+class CV extends React.Component {  
+  constructor(props) { 
+    super(props);
+  }
   render() {
-    return ( 
-      <main>
-      <header> 
-        <h3>Image</h3>
-        <h1>Name</h1> 
-        <h3>Title</h3>
+    return (  
+     
+      <main className="CV">
+      <header className="header"> 
+        <h3 onClick={() => [console.log(this.props)]}>Image</h3>
+        <h1>Name<h5>Title</h5></h1> 
+        
       </header> 
       <section> 
         <div> 
