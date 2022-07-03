@@ -1,20 +1,21 @@
-.education { 
-  display: flex ; 
-  flex-direction: column; 
+.educationCV { 
+  display: grid ; 
   height: fit-content; 
-  width: fit-content; 
+  width: fit-content;  
+  color: white;
+  margin-left: 1rem;
 }; 
 
-.degree { 
-  height: 3rem; 
-  margin: 0;
+.degreeCV { 
+  margin-bottom: 0; 
 } 
 
-.year {
+.yearCV {
   margin: 0;
+  font-size: 15px;
 }
 
-.university {  
-  height: 3rem;
-  margin: 0; 
+.universityCV {  
+  margin: 0;  
+  font-size: 15px;
 }

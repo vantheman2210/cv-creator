@@ -1,4 +1,15 @@
-.experienceInput { 
+.experience { 
+  display: grid; 
+  grid-template-columns: 1fr 4fr; 
+  padding: 2rem; 
+  letter-spacing: 5px; 
+  font-size: 12px; 
+  padding-top: 0; 
+  gap: 2rem;
+}  
+
+.years { 
   display: flex; 
-  flex-direction: column;
+  flex-direction: row; 
+  gap: 1rem;
 }

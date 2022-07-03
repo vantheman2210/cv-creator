@@ -1,20 +1,34 @@
-import React from "react"; 
+import React from 'react';
+import '../styles/Experience.css';
 
+class Experience extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
-class Experience extends React.Component { 
-  render()  {  
-    return (
-    <div className="experienceInput">  
-      <h1>Experience:</h1>
-      <input type="text" placeholder="Position"></input> 
-      <input type="text" placeholder="Company"></input> 
-      <input type="text" placeholder="City"></input> 
-      <input type="date" placeholder="From"></input>  
-      <input type="date" placeholder="To"></input>  
-      <button>Add</button>  
-      <button>Delete</button> 
-    </div>
-    )
-  }
+	render() {
+		const { experience } = this.props;
+		console.log(experience)
+
+		return (
+			<div>
+				{experience.map((exp) => {
+					return (
+						<div className="experience">
+							<div className="years">
+								<p>{exp.dateFrom}</p> 
+                <p>-</p>
+								<p>{exp.dateTo}</p>
+							</div>
+							<div>
+								<p>{exp.position}</p>
+								<p>{exp.company}</p>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		);
+	}
 }
 export default Experience;

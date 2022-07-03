@@ -1,20 +1,33 @@
-import React from "react"; 
+import React from 'react';
+import '../styles/References.css';
 
+class References extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		const { experience } = this.props;
+		console.log(experience);
 
-class References extends React.Component { 
-  render()  {  
-    return (
-    <div className="referencesInput">  
-      <h1>References:</h1>
-      <input type="text" placeholder="Full Name"></input> 
-      <input type="text" placeholder="Position"></input> 
-      <input type="text" placeholder="Company"></input> 
-      <input type="text" placeholder="Email"></input>  
-      <input type="date" placeholder="Phone"></input>  
-      <button>Add</button>  
-      <button>Delete</button> 
-    </div>
-    )
-  }
+		return (
+			<div>
+				{experience.map((exp) => {
+					return (
+						<div className="referenceCV">
+							<div className="years">
+								<p>{exp.dateFrom}</p>
+								<p>-</p>
+								<p>{exp.dateTo}</p>
+							</div>
+							<div>
+								<p>{exp.position}</p>
+								<p>{exp.company}</p>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		);
+	}
 }
 export default References;

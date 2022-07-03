@@ -1,19 +1,28 @@
-import React from "react"; 
+import React from 'react';
 import '../styles/Education.css';
 
-class Education extends React.Component { 
-  constructor(props) {
-		super(props); 
-    console.log(this.props)
+class Education extends React.Component {
+	constructor(props) {
+		super(props);
 	}
 
 	render() {
-		const { university, degree, subject, fromYear, toYear } = this.props.info;
+		const { education } = this.props;
 		return (
-			<div className="education">
-				<h4 className="degree">{degree} {subject}</h4>  
-        <p className="year">{fromYear} - {toYear}</p>
-        <h5 className="university">{university}</h5>
+			<div>
+				{education.map((edu) => {
+					return (
+						<div className="educationCV">
+							<h4 className="degreeCV">
+								{edu.degree} in {edu.subject}
+							</h4>  
+							<p className="universityCV">{edu.university}</p>
+							<p className="yearCV">
+								{edu.fromYear} - {edu.toYear}
+							</p>
+						</div>
+					);
+				})}
 			</div>
 		);
 	}

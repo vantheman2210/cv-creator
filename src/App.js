@@ -1,6 +1,5 @@
 import './App.css';
 
-import './styles/References.css';
 import './styles/Skills.css';
 import './styles/CV.css';
 import Header from './Components/Header';
@@ -17,42 +16,68 @@ class App extends React.Component {
 		super();
 
 		this.state = {
-			firstName: 'John',
-			lastName: 'Doe',
-			title: 'Junior Developer',
-			address: '',
-			phone: 0,
-			email: '',
-			description: '',
-			university: '',
-			degree: '',
-			subject: '',
-			fromYear: '',
-			toYear: '',
-			position: '',
-			company: '', 
-			dateFrom: '', 
-			dateTo: '',
-			fullName: '',
-			refPosition: '',
-			refCompany: '',
-			refEmail: '',
-			category: '',
-			subjectSkill: ''
+			personal: {
+				firstName: 'John',
+				lastName: 'Doe',
+				title: 'Senior Developer',
+				address: '',
+				phone: 0,
+				email: '',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada risus at euismod pharetra. Sed tristique consequat elit, at consequat velit pellentesque et. Nullam est felis, bibendum nec lectus ac, dignissim blandit magna. Donec imperdiet neque et augue dapibus bibendum. Phasellus ullamcorper augue felis, et vehicula lacus vulputate id. Vivamus.'
+			},
+			edu: {
+				university: '',
+				degree: '',
+				subject: '',
+				fromYear: '',
+				toYear: ''
+			},
+			exp: {
+				position: '',
+				company: '',
+				dateFrom: '',
+				dateTo: ''
+			},
+			ref: {
+				fullName: '',
+				refPosition: '',
+				refCompany: '',
+				refEmail: ''
+			},
+			skill: {
+				category: '',
+				subjectSkill: ''
+			},
+			experience: [],
+			education: []
 		};
 	}
 
 	handleChange = (e) => {
 		const value = e.target.value;
+		const name = e.target.id;
+		console.log(name);
 		this.setState({
-			[e.target.name]: value
+			[name]: {
+				...this.state[name],
+				[e.target.name]: value
+			}
 		});
 	};
 
 	onSubmitTask = (e) => {
 		e.preventDefault();
+		const id = e.target.id;
+		const name = e.target.name;
 
-		console.log(this.state);
+		this.setState({
+			[name]: this.state[name].concat(this.state[id]),
+			[id]: {
+				...this.state[id],
+				[name]: ''
+			}
+		});
 	};
 
 	render() {
@@ -70,8 +95,8 @@ class App extends React.Component {
 			fromYear,
 			toYear,
 			company,
-			position, 
-			dateFrom, 
+			position,
+			dateFrom,
 			dateTo,
 			fullName,
 			refCompany,
@@ -146,9 +171,10 @@ class App extends React.Component {
 					</form>
 					<div className="educationInput">
 						<h1>Education:</h1>
-						<form onSubmit={this.onSubmitTask}>
+						<form id="edu" name="education" onSubmit={this.onSubmitTask}>
 							<input
 								name="university"
+								id="edu"
 								value={university}
 								type="text"
 								onChange={this.handleChange}
@@ -156,6 +182,7 @@ class App extends React.Component {
 							/>
 							<input
 								name="degree"
+								id="edu"
 								value={degree}
 								type="text"
 								onChange={this.handleChange}
@@ -163,6 +190,7 @@ class App extends React.Component {
 							/>
 							<input
 								name="subject"
+								id="edu"
 								value={subject}
 								type="text"
 								onChange={this.handleChange}
@@ -170,6 +198,7 @@ class App extends React.Component {
 							/>
 							<input
 								name="fromYear"
+								id="edu"
 								value={fromYear}
 								type="number"
 								min="1900"
@@ -180,6 +209,7 @@ class App extends React.Component {
 							/>
 							<input
 								name="toYear"
+								id="edu"
 								value={toYear}
 								type="number"
 								min="1900"
@@ -192,11 +222,13 @@ class App extends React.Component {
 							<button>Delete</button>
 						</form>
 					</div>
+
 					<div className="experienceInput">
 						<h1>Experience:</h1>
-						<form>
+						<form id="exp" name="experience" onSubmit={this.onSubmitTask}>
 							<input
 								name="position"
+								id="exp"
 								value={position}
 								type="text"
 								onChange={this.handleChange}
@@ -204,29 +236,39 @@ class App extends React.Component {
 							/>
 							<input
 								name="company"
+								id="exp"
 								value={company}
 								type="text"
 								onChange={this.handleChange}
 								placeholder="Company"
 							/>
-							<input name="dateFrom"
+							<input
+								name="dateFrom"
+								id="exp"
 								value={dateFrom}
 								type="number"
 								min="1900"
 								max="2099"
 								step="1"
-								onChange={this.handleChange} placeholder="From" />
-							<input name="dateTo"
+								onChange={this.handleChange}
+								placeholder="From"
+							/>
+							<input
+								name="dateTo"
+								id="exp"
 								value={dateTo}
 								type="number"
 								min="1900"
 								max="2099"
 								step="1"
-								onChange={this.handleChange} placeholder="To" />
+								onChange={this.handleChange}
+								placeholder="To"
+							/>
+							<button type="submit">Add</button>
+							<button>Delete</button>
 						</form>
-						<button>Add</button>
-						<button>Delete</button>
 					</div>
+
 					<div className="referencesInput">
 						<h1>References:</h1>
 						<form>
@@ -292,11 +334,21 @@ class App extends React.Component {
 				</div>
 				<div className="cv">
 					<div className="columnOne">
-						<Education info={this.state} />
+						<div className="photo">Image</div>
+						<div className="education">
+							<h4>Education</h4>
+							<Education education={this.state.education} />
+						</div> 
+						<div className="references">
+							<h4>References</h4>
+							<References education={this.state.education} />
+						</div>
 					</div>
 
 					<div className="columnTwo">
-						<Personal info={this.state} />
+						<Personal info={this.state.personal} />
+						<h4 className="workExp">Work experience</h4>
+						<Experience experience={this.state.experience} />
 					</div>
 				</div>
 			</main>
