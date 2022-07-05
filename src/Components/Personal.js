@@ -7,7 +7,8 @@ class Personal extends React.Component {
 	}
 
 	render() {
-		const { firstName, lastName, title, description } = this.props.info;
+		const { firstName, lastName, title, description } = this.props.info; 
+		
 		return (
 			<main>
 				<div className="headerPersonal">

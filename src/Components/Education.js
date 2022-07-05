@@ -1,9 +1,15 @@
 import React from 'react';
-import '../styles/Education.css';
+import '../styles/Education.css'; 
+import uniqid from 'uniqid';
 
 class Education extends React.Component {
 	constructor(props) {
 		super(props);
+	} 
+
+	editEducation = (edu) => { 
+		return edu.degree = '' 
+		
 	}
 
 	render() {
@@ -12,17 +18,19 @@ class Education extends React.Component {
 			<div>
 				{education.map((edu) => {
 					return (
-						<div className="educationCV">
-							<h4 className="degreeCV">
+						<div key={uniqid()} className="educationCV">
+							<p className="degreeCV"><b>
 								{edu.degree} in {edu.subject}
-							</h4>  
+								</b></p>  
 							<p className="universityCV">{edu.university}</p>
 							<p className="yearCV">
 								{edu.fromYear} - {edu.toYear}
-							</p>
-						</div>
+							</p>  
+							
+						</div> 
 					);
-				})}
+				})}  
+				
 			</div>
 		);
 	}

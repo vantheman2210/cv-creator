@@ -2,8 +2,11 @@
   display: grid ; 
   height: fit-content; 
   width: fit-content;  
-  color: white;
-  margin-left: 1rem;
+  color: white; 
+  padding: 1rem;
+  font-size: 10px; 
+  letter-spacing: 3px; 
+  gap: 5px;
 }; 
 
 .degreeCV { 
@@ -12,10 +15,12 @@
 
 .yearCV {
   margin: 0;
-  font-size: 15px;
+ 
 }
 
 .universityCV {  
   margin: 0;  
-  font-size: 15px;
-}
+ 
+} 
+
+

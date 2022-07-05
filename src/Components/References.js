@@ -1,28 +1,26 @@
 import React from 'react';
 import '../styles/References.css';
+import uniqid from 'uniqid';
 
 class References extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 	render() {
-		const { experience } = this.props;
-		console.log(experience);
-
+		const { references } = this.props;
+		
 		return (
-			<div>
-				{experience.map((exp) => {
+			<div >
+				{references.map((ref) => {
 					return (
-						<div className="referenceCV">
-							<div className="years">
-								<p>{exp.dateFrom}</p>
-								<p>-</p>
-								<p>{exp.dateTo}</p>
+						<div key={uniqid()} className="referenceCV">
+							<p><b>{ref.fullName}</b></p>
+
+							<div className='positionCompany'>
+								<p>{ref.refPosition}</p>
+								<p>{'|' + ref.refCompany}</p>
 							</div>
-							<div>
-								<p>{exp.position}</p>
-								<p>{exp.company}</p>
-							</div>
+							<p className='refEmailCv'>{ref.refEmail}</p>
 						</div>
 					);
 				})}

@@ -1,21 +1,28 @@
-import React from 'react';
+import React from 'react'; 
+import uniqid from 'uniqid';
 
 class Skills extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 	render() {
+		const { skills } = this.props;
+		
 		return (
-			<div className="skillsInput">
-				<h1>Skills:</h1>
-				<input type="text" placeholder="Category" />
-				<input type="text" placeholder="Subject" />
-				<span className="star-rating">
-					<input type="radio" name="rating" value="1" />
-					<input type="radio" name="rating" value="2" />
-					<input type="radio" name="rating" value="3" />
-					<input type="radio" name="rating" value="4" />
-					<input type="radio" name="rating" value="5" />
-				</span>
-				<button>Add</button>
-				<button>Delete</button>
+			<div  className="skillsDiv">
+				{skills.map((skill) => {
+					return (
+						<div key={uniqid()} className="skillsCV">
+							<div>
+								<p className='categoryCV'>
+									{skill.category}:
+								</p>
+								<p>{skill.subjectSkill}</p>
+							</div>
+							<p className='levelCV'>{skill.level}</p>
+						</div>
+					);
+				})}
 			</div>
 		);
 	}

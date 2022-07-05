@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Experience.css';
+import uniqid from 'uniqid';
 
 class Experience extends React.Component {
 	constructor(props) {
@@ -8,13 +9,13 @@ class Experience extends React.Component {
 
 	render() {
 		const { experience } = this.props;
-		console.log(experience)
+		
 
 		return (
-			<div>
+			<div   className='experienceDiv'>
 				{experience.map((exp) => {
 					return (
-						<div className="experience">
+						<div key={uniqid()} className="experienceCV">
 							<div className="years">
 								<p>{exp.dateFrom}</p> 
                 <p>-</p>

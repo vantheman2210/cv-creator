@@ -1,4 +1,29 @@
-.skillsInput { 
-  display: flex; 
-  flex-direction: column;
+.skillsDiv { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr) ; 
+  min-height: 12rem;
 }
+
+.skillsCV { 
+  display: grid; 
+  grid-template-rows: 1fr 2fr; 
+  padding: 2rem; 
+  letter-spacing: 5px; 
+  font-size: 12px; 
+  padding-top: 0; 
+  
+}  
+
+.skillsCV > div { 
+  display: flex; 
+  flex-direction: row; 
+  gap: 1rem;  
+  padding: 2px;
+  box-shadow: 1px 1px 6px 5px #dcd9d9;
+} 
+
+.levelCV { 
+  margin-top: -1rem; 
+  padding: 2px;
+}
+

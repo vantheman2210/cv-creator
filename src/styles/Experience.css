@@ -1,6 +1,11 @@
-.experience { 
+.experienceDiv { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.experienceCV { 
   display: grid; 
-  grid-template-columns: 1fr 4fr; 
+  grid-template-columns: 1fr 2fr; 
   padding: 2rem; 
   letter-spacing: 5px; 
   font-size: 12px; 

@@ -1,48 +1,192 @@
-
-.cv { 
-  padding-top: 5rem;
-  display: grid; 
-  grid-template-columns: 2fr 4fr;
-  width: 21cm;
-  height: 29.7cm; 
-  margin: 0 auto;
-  margin-bottom: 0.5cm;
-} 
-
-@media print {
-  html, body {
-    width: 210mm;
-    height: 297mm;
-  }
-} 
-
-.columnOne { 
-  background-color: rgb(26, 26, 26); 
-  color: white;
-} 
-
-
-.workExp { 
-  padding: 2rem; 
-  letter-spacing: 5px; 
-  font-size: 12px; 
-  padding-bottom: 0;
-} 
-
-.photo {
-  width: 16rem; 
-  height: 16rem;
+.container {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
 }
 
-.education {  
-  display: grid;
-  padding: 1rem; 
-  height: fit-content;
-}  
+@media only screen and (max-width: 1000px) {
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
+}
 
-.references {  
-  display: grid;
-  padding: 1rem; 
-  height: fit-content;
+.forms {
+	display: grid;
+	padding: 1rem;
+	box-shadow: 1px 1px 6px 5px #dcd9d9;
+	margin-top: 1rem; 
+	margin-bottom: 1rem; 
+	background-color: #f4f4f4;
 } 
- 
+
+.forms > div > h1 { 
+	font-size: 1em;
+}
+
+form > input {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid rgb(183 183 183);
+	width: 25rem; 
+	font-style: italic;
+}
+
+form > select {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid rgb(183 183 183);
+	width: 5rem;
+}
+
+form > textarea {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid rgb(183 183 183);
+	width: 25rem; 
+	font-style: italic;
+}
+
+form > button { 
+	width: fit-content;
+	border: 1px solid rgb(183 183 183);
+	background-color: white;
+	border-radius: 15%;
+	box-shadow: 1px 1px 3px 4px #d9d9d9;
+} 
+
+form > button > img { 
+	width: 40px;
+  height: 40px;
+}
+
+button:hover {
+	background-color: rgb(241, 241, 241);
+}
+
+button:active {
+	background-color: rgb(201, 201, 201);
+	box-shadow: 1px 1px 3px 4px rgb(228, 228, 228);
+	transform: translateY(4px);
+}
+
+.personalForm > form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.educationInput > form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.experienceInput > form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.referencesInput > form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.skillsInput > form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.cv {
+	padding-top: 1rem;
+	display: grid;
+	grid-template-columns: 2fr 4fr;
+	width: 21cm;
+	height: fit-content; 
+	/*height: 29.7cm;*/
+	margin: 0 auto;
+	margin-bottom: 0.5cm;
+	position: sticky;
+	top: 0;
+}
+
+.photo { 
+	background: url('./Images/frame.png');
+	background-size: 16em 16em;
+	padding-left: 1vh;
+}
+
+.columnOne {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	background-color: rgb(26, 26, 26);
+	color: white;
+}
+
+.workExp {
+	padding: 2rem;
+	letter-spacing: 5px;
+	font-size: 12px;
+	padding-bottom: 0;
+}
+
+.photo {
+	width: 16rem;
+	height: 16rem;
+}
+
+.education {
+	display: grid;
+	padding: 1rem;
+	height: fit-content;
+} 
+
+.educationBtn { 
+  display: none;
+  position: absolute; 
+	top: 27rem; 
+	left: 6rem;
+} 
+
+.education:hover > .educationBtn {
+  display: block;
+}
+
+.education > h4 {
+	border-bottom: 1px solid gold;
+}
+
+.degreeCV {
+	margin-bottom: 0;
+}
+
+.references {
+	display: grid;
+	padding: 1rem;
+	height: fit-content;
+}
+
+.references > h4 {
+	border-bottom: 1px solid gold;
+}
+
+.contact {
+	display: grid;
+	padding: 1rem;
+	height: -moz-fit-content;
+	height: fit-content;
+}
+
+.contact > h4 {
+	border-bottom: 1px solid gold;
+}
+
+@media print {
+	html,
+	body {
+		width: 210mm;
+		height: 297mm;
+	}
+}
