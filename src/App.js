@@ -1,7 +1,4 @@
 import './App.css';
-
-import './styles/Skills.css';
-import './styles/CV.css';
 import Header from './Components/Header';
 import Personal from './Components/Personal';
 import Experience from './Components/Experience';
@@ -9,7 +6,6 @@ import Education from './Components/Education';
 import Skills from './Components/Skills';
 import References from './Components/References';
 import Contact from './Components/Contact';
-import CV from './Components/CV';
 import React from 'react';
 import icon from './Images/add.png';
 
@@ -83,18 +79,10 @@ class App extends React.Component {
 				[name]: ''
 			}
 		});
-	}; 
+	};
 
-	printCv = () => { 
-		const printPage = document.querySelector('.cv').innerHTML; 
-
-		const originalPage = document.body.innerHTML;
-
-		document.body.innerHtml = printPage; 
-
-		window.print(); 
-
-		document.body.innerHtml = originalPage
+   print = () => { 
+		window.print();
 	}
 
 	render() {
@@ -379,18 +367,18 @@ class App extends React.Component {
 									<img alt="add" rel="icon" src={icon} />
 								</button>
 							</form>
-						</div> 
-						<button type="submit">
-									<img alt="add" rel="icon" src={icon} onClick={this.printCv}/>
-								</button>
+						</div>
+						<button type="button" value="Print" onClick={this.print}>
+							Generate PDF
+						</button>
 					</div>
 					<div className="cv">
 						<div className="columnOne">
 							<div className="photo" />
 							<div className="education">
 								<h4>Education</h4>
-								<Education education={this.state.education} /> 
-								<button className='educationBtn'>Edit</button>
+								<Education education={this.state.education} />
+								<button className="educationBtn">Edit</button>
 							</div>
 							<div className="references">
 								<h4>References</h4>

@@ -17,13 +17,13 @@ class Experience extends React.Component {
 					return (
 						<div key={uniqid()} className="experienceCV">
 							<div className="years">
-								<p>{exp.dateFrom}</p> 
+								<p contentEditable="true">{exp.dateFrom}</p> 
                 <p>-</p>
-								<p>{exp.dateTo}</p>
+								<p contentEditable="true">{exp.dateTo}</p>
 							</div>
 							<div>
-								<p>{exp.position}</p>
-								<p>{exp.company}</p>
+								<p contentEditable="true">{exp.position}</p>
+								<p contentEditable="true">{exp.company}</p>
 							</div>
 						</div>
 					);

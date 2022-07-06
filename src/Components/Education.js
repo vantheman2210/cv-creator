@@ -18,15 +18,15 @@ class Education extends React.Component {
 			<div>
 				{education.map((edu) => {
 					return (
-						<div key={uniqid()} className="educationCV">
-							<p className="degreeCV"><b>
+						<div  key={uniqid()} className="educationCV">
+							<p contentEditable="true" 
+							className="degreeCV"><b>
 								{edu.degree} in {edu.subject}
 								</b></p>  
-							<p className="universityCV">{edu.university}</p>
-							<p className="yearCV">
+							<p contentEditable="true" className="universityCV">{edu.university}</p>
+							<p contentEditable="true" className="yearCV">
 								{edu.fromYear} - {edu.toYear}
 							</p>  
-							
 						</div> 
 					);
 				})}  

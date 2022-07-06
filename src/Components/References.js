@@ -14,13 +14,13 @@ class References extends React.Component {
 				{references.map((ref) => {
 					return (
 						<div key={uniqid()} className="referenceCV">
-							<p><b>{ref.fullName}</b></p>
+							<p contentEditable="true"><b>{ref.fullName}</b></p>
 
 							<div className='positionCompany'>
-								<p>{ref.refPosition}</p>
-								<p>{'|' + ref.refCompany}</p>
+								<p contentEditable="true">{ref.refPosition}</p>
+								<p contentEditable="true">{'|' + ref.refCompany}</p>
 							</div>
-							<p className='refEmailCv'>{ref.refEmail}</p>
+							<p contentEditable="true" className='refEmailCv'>{ref.refEmail}</p>
 						</div>
 					);
 				})}

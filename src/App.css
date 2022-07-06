@@ -189,4 +189,17 @@ button:active {
 		width: 210mm;
 		height: 297mm;
 	}
+} 
+
+
+@media print {
+  .forms {
+      display: none;
+   } 
+	 .header { 
+		display: none;
+	 }
+   .cv {
+      display: grid;
+   }
 }
