@@ -14,12 +14,12 @@
 	display: grid;
 	padding: 1rem;
 	box-shadow: 1px 1px 6px 5px #dcd9d9;
-	margin-top: 1rem; 
-	margin-bottom: 1rem; 
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	background-color: #f4f4f4;
-} 
+}
 
-.forms > div > h1 { 
+.forms > div > h1 {
 	font-size: 1em;
 }
 
@@ -27,7 +27,7 @@ form > input {
 	padding: 5px;
 	border-radius: 5px;
 	border: 1px solid rgb(183 183 183);
-	width: 25rem; 
+	width: 25rem;
 	font-style: italic;
 }
 
@@ -42,21 +42,21 @@ form > textarea {
 	padding: 5px;
 	border-radius: 5px;
 	border: 1px solid rgb(183 183 183);
-	width: 25rem; 
+	width: 25rem;
 	font-style: italic;
 }
 
-form > button { 
+form > button {
 	width: fit-content;
 	border: 1px solid rgb(183 183 183);
 	background-color: white;
 	border-radius: 15%;
 	box-shadow: 1px 1px 3px 4px #d9d9d9;
-} 
+}
 
-form > button > img { 
+form > button > img {
 	width: 40px;
-  height: 40px;
+	height: 40px;
 }
 
 button:hover {
@@ -104,7 +104,7 @@ button:active {
 	display: grid;
 	grid-template-columns: 2fr 4fr;
 	width: 21cm;
-	height: fit-content; 
+	height: fit-content;
 	/*height: 29.7cm;*/
 	margin: 0 auto;
 	margin-bottom: 0.5cm;
@@ -112,7 +112,7 @@ button:active {
 	top: 0;
 }
 
-.photo { 
+.photo {
 	background: url('./Images/frame.png');
 	background-size: 16em 16em;
 	padding-left: 1vh;
@@ -141,17 +141,17 @@ button:active {
 	display: grid;
 	padding: 1rem;
 	height: fit-content;
-} 
+}
 
-.educationBtn { 
-  display: none;
-  position: absolute; 
-	top: 27rem; 
+.educationBtn {
+	display: none;
+	position: absolute;
+	top: 27rem;
 	left: 6rem;
-} 
+}
 
 .education:hover > .educationBtn {
-  display: block;
+	display: block;
 }
 
 .education > h4 {
@@ -183,23 +183,40 @@ button:active {
 	border-bottom: 1px solid gold;
 }
 
+/* Printing rules */
+
 @media print {
 	html,
 	body {
-		width: 210mm;
-		height: 297mm;
+		width: 21cm;
+		height: 29.7cm; 
+		font: 9pt/1.5;
 	}
-} 
+}
 
+@page {
+	size: 100%;
+	margin: 0mm; 
+}
 
 @media print {
-  .forms {
-      display: none;
-   } 
-	 .header { 
+	.forms {
 		display: none;
-	 }
-   .cv {
-      display: grid;
-   }
+	}
+
+	.cv {
+		display: grid;
+		padding-top: 0;
+		-webkit-print-color-adjust: exact;
+	} 
+
+	.columnOne { 
+		grid-template-rows: auto;
+		padding-bottom: 0mm;
+	} 
+
+	.contact, .references, .education { 
+		padding-top: 0;
+	}
+	
 }
