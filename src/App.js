@@ -5,7 +5,8 @@ import Experience from './Components/Experience';
 import Education from './Components/Education';
 import Skills from './Components/Skills';
 import References from './Components/References';
-import Contact from './Components/Contact';
+import Contact from './Components/Contact'; 
+import Photo from './Components/Photo';
 import React from 'react';
 import icon from './Images/add.png';
 
@@ -19,6 +20,7 @@ class App extends React.Component {
 				lastName: '',
 				title: '',
 				address: '',
+				photo: {},
 				phone: '',
 				email: '',
 				description: ''
@@ -57,12 +59,23 @@ class App extends React.Component {
 	handleChange = (e) => {
 		const value = e.target.value;
 		const name = e.target.id;
-		console.log(value);
-		console.log(name);
 		this.setState({
 			[name]: {
 				...this.state[name],
 				[e.target.name]: value
+			}
+		});
+	}; 
+
+	handlePhoto = (e) => {
+		const files = e.target.files[0];
+		const name = e.target.id;
+		console.log(files);
+		console.log(name);
+		this.setState({
+			[name]: {
+				...this.state[name],
+				[e.target.name]: URL.createObjectURL(files),
 			}
 		});
 	};
@@ -91,6 +104,7 @@ class App extends React.Component {
 			lastName,
 			title,
 			address,
+			photo,
 			phone,
 			email,
 			description,
@@ -110,7 +124,9 @@ class App extends React.Component {
 			category,
 			subjectSkill,
 			level
-		} = this.state;
+		} = this.state; 
+
+		
 		return (
 			<main>
 				<Header />
@@ -155,7 +171,7 @@ class App extends React.Component {
 										placeholder="Address"
 										required
 									/>
-									<input type="file" accept="image/" />
+									<input name="photo" label="photo" id="personal" value={photo} type="file" accept="image/" onChange={this.handlePhoto} />
 									<input
 										name="phone"
 										id="personal"
@@ -368,13 +384,13 @@ class App extends React.Component {
 								</button>
 							</form>
 						</div>
-						<button type="button" value="Print" onClick={this.print}>
+						<button className="pdf" type="button" value="Print" onClick={this.print}>
 							Generate PDF
 						</button>
 					</div>
 					<div className="cv">
 						<div className="columnOne">
-							<div className="photo" />
+							<Photo photo={this.state.personal.photo} />
 							<div className="education">
 								<h4>Education</h4>
 								<Education education={this.state.education} />
