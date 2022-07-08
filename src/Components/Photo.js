@@ -8,7 +8,7 @@ class Photo extends React.Component {
 
 	render() {
 		const { photo } = this.props;
-		console.log(photo);
+		
 
 		return (
 			<div
