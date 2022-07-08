@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Roboto' ;
+  src: url(./Fonts/Roboto-Regular.ttf);
+}
+
+* { 
+	font-family: 'Roboto', sans-serif;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
@@ -116,13 +125,52 @@ button:active {
 	background: url('./Images/frame.png');
 	background-size: 16em 16em;
 	padding-left: 1vh;
-} */
+} */ 
 
 .columnOne {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr 1fr;
 	background-color: rgb(26, 26, 26);
 	color: white;
+} 
+
+input[type="file"] {
+	display: none;
+}
+
+.upload {  
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	width: fit-content;
+	align-items: center;
+	gap: 1rem;
+	padding: 5px;
+	border-radius: 5px; 
+	background-color: white;
+	border: 2px solid gold;
+	font-weight: bold; 
+	font-size: 12px;
+	letter-spacing: 3px;
+	text-align: center; 
+	cursor: pointer;
+} 
+
+.icon { 
+	background: url('./Images/frame.png');
+	background-size: 100% 100%; 
+	height: 2rem;
+	width: 2rem;
+	display: block;
+}
+
+.upload:hover {
+	background-color: rgb(241, 241, 241);
+}
+
+.upload:active {
+	background-color: rgb(201, 201, 201);
+	box-shadow: 1px 1px 3px 4px rgb(228, 228, 228);
+	transform: translateY(4px);
 }
 
 .workExp {
@@ -187,9 +235,9 @@ button:active {
 	margin-top: 1em;
 	width: fit-content;
 	padding: 10px; 
-	border: 1px solid rgb(183 183 183);
+	border: 2px solid rgb(183 183 183);
 	background-color: white;
-	border-radius: 8%;
+	border-radius: 5%;
 	box-shadow: 1px 1px 3px 4px #d9d9d9;
 	font-size: 15px; 
 	font-weight: bold; 
@@ -216,12 +264,13 @@ button:active {
 
 	.columnOne { 
 		grid-template-rows: auto;
-		margin-bottom: 2mm;
-		padding-bottom: 5mm;
+		margin-bottom: 0mm;
+		padding-bottom: 16mm;
 	} 
 
 	.contact, .references, .education { 
 		padding-top: 0;
+		margin-top: 10mm;
 	} 
 
 	.workExp { 
@@ -233,10 +282,11 @@ button:active {
     flex-wrap: wrap;
 	} 
 
-	.skillsCv { 
+	.skillsCV { 
 		display: grid;
     grid-template-rows: 1fr 2fr;
-    padding-left: 2rem;
+    padding-left: 2rem; 
+		padding-right: 2rem;
     letter-spacing: 5px;
     font-size: 12px;
     padding-top: 0;

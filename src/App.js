@@ -5,7 +5,7 @@ import Experience from './Components/Experience';
 import Education from './Components/Education';
 import Skills from './Components/Skills';
 import References from './Components/References';
-import Contact from './Components/Contact'; 
+import Contact from './Components/Contact';
 import Photo from './Components/Photo';
 import React from 'react';
 import icon from './Images/add.png';
@@ -65,7 +65,7 @@ class App extends React.Component {
 				[e.target.name]: value
 			}
 		});
-	}; 
+	};
 
 	handlePhoto = (e) => {
 		const files = e.target.files[0];
@@ -75,7 +75,7 @@ class App extends React.Component {
 		this.setState({
 			[name]: {
 				...this.state[name],
-				[e.target.name]: URL.createObjectURL(files),
+				[e.target.name]: URL.createObjectURL(files)
 			}
 		});
 	};
@@ -94,9 +94,9 @@ class App extends React.Component {
 		});
 	};
 
-   print = () => { 
+	print = () => {
 		window.print();
-	}
+	};
 
 	render() {
 		const {
@@ -124,9 +124,8 @@ class App extends React.Component {
 			category,
 			subjectSkill,
 			level
-		} = this.state; 
+		} = this.state;
 
-		
 		return (
 			<main>
 				<Header />
@@ -171,7 +170,19 @@ class App extends React.Component {
 										placeholder="Address"
 										required
 									/>
-									<input name="photo" label="photo" id="personal" value={photo} type="file" accept="image/" onChange={this.handlePhoto} />
+									<label className="upload">
+										Upload photo
+										<span className="icon" />
+										<input
+											name="photo"
+											label="photo"
+											id="personal"
+											value={photo}
+											type="file"
+											accept="image/png, image/gif, image/jpeg, image/jpg"
+											onChange={this.handlePhoto}
+										/>
+									</label>
 									<input
 										name="phone"
 										id="personal"
@@ -195,7 +206,8 @@ class App extends React.Component {
 										value={description}
 										type="text"
 										onChange={this.handleChange}
-										placeholder="About Me"
+										maxLength="500"
+										placeholder="About Me (500 characters max)"
 										required
 									/>
 								</form>

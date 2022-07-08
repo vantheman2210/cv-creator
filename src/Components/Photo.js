@@ -13,7 +13,6 @@ class Photo extends React.Component {
 		return (
 			<div
 				className="photo"
-				accept="image/png, image/gif, image/jpeg, image/jpg"
 				style={{
 					backgroundImage: 'url(' + photo + ')'
 				}}
