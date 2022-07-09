@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Contact.css';
 
 const Contact = (props) => {
-	const { email, phone, address } = this.props.contacts;
+	const { email, phone, address } = props;
 
 	return (
 		<div className="contactsCV">

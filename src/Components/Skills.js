@@ -3,20 +3,20 @@ import uniqid from 'uniqid';
 import '../styles/Skills.css';
 
 const Skills = (props) => {
-	const { skills } = this.props;
+	const { skills } = props;
 
 	return (
 		<div className="skillsDiv">
-			{skills.map((skill) => {
+			{[skills].map((skill) => {
 				return (
 					<div key={uniqid()} className="skillsCV">
 						<div>
-							<p contentEditable="true" className="categoryCV">
-								{skill.category}:
+							<p contentEditable="true" suppressContentEditableWarning={true} className="categoryCV">
+								{skill.category}
 							</p>
-							<p contentEditable="true">{skill.subjectSkill}</p>
+							<p contentEditable="true" suppressContentEditableWarning={true}>{skill.subjectSkill}</p>
 						</div>
-						<p contentEditable="true" className="levelCV">
+						<p contentEditable="true" suppressContentEditableWarning={true} className="levelCV">
 							{skill.level}
 						</p>
 					</div>

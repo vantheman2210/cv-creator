@@ -7,18 +7,18 @@ const References = (props) => {
 
 	return (
 		<div>
-			{references.map((ref) => {
+			{[references].map((ref) => {
 				return (
 					<div key={uniqid()} className="referenceCV">
-						<p contentEditable="true">
+						<p contentEditable="true" suppressContentEditableWarning={true}>
 							<b>{ref.fullName}</b>
 						</p>
 
 						<div className="positionCompany">
-							<p contentEditable="true">{ref.refPosition}</p>
-							<p contentEditable="true">{'|' + ref.refCompany}</p>
+							<p contentEditable="true" suppressContentEditableWarning={true}>{ref.refPosition}</p>
+							<p contentEditable="true" suppressContentEditableWarning={true}>{'|' + ref.refCompany}</p>
 						</div>
-						<p contentEditable="true" className="refEmailCv">
+						<p contentEditable="true" className="refEmailCv" suppressContentEditableWarning={true}>
 							{ref.refEmail}
 						</p>
 					</div>
