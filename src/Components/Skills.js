@@ -7,7 +7,7 @@ const Skills = (props) => {
 
 	return (
 		<div className="skillsDiv">
-			{[skills].map((skill) => {
+			{skills.map((skill) => {
 				return (
 					<div key={uniqid()} className="skillsCV">
 						<div>

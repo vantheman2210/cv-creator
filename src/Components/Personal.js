@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Personal.css';
 
 const Personal = (props) => {
-	const { firstName, lastName, title, description } = props.info;
+	const { firstName, lastName, title, description } = props.personal;
 
 	return (
 		<main>

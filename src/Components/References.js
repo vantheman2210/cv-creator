@@ -7,7 +7,7 @@ const References = (props) => {
 
 	return (
 		<div>
-			{[references].map((ref) => {
+			{references.map((ref) => {
 				return (
 					<div key={uniqid()} className="referenceCV">
 						<p contentEditable="true" suppressContentEditableWarning={true}>

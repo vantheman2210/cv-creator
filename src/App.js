@@ -10,8 +10,8 @@ import Photo from './Components/Photo';
 import React, { useEffect, useState } from 'react';
 import icon from './Images/add.png';
 
-const useApp = (props) => {
-	const [ personal, setPersonal ] = useState({
+const initialState = {
+	personal: {
 		firstName: '',
 		lastName: '',
 		title: '',
@@ -20,142 +20,100 @@ const useApp = (props) => {
 		phone: '',
 		email: '',
 		description: ''
-	});
-
-	const [ education, setEducation ] = useState({
+	},
+	edu: {
 		university: '',
 		degree: '',
 		subject: '',
 		fromYear: '',
 		toYear: ''
-	});
-
-	const [ experience, setExperience ] = useState({
+	},
+	exp: {
 		position: '',
 		company: '',
 		dateFrom: '',
 		dateTo: ''
-	});
-	const [ references, setReferences ] = useState({
+	},
+	ref: {
 		fullName: '',
 		refPosition: '',
 		refCompany: '',
 		refEmail: ''
-	});
-	const [ skills, setSkills ] = useState({
+	},
+	skill: {
 		category: '',
 		subjectSkill: '',
 		level: ''
+	}
+}
+
+const useApp = (props) => {
+	const [ formData, setFormData ] = useState(initialState);
+
+	const [ dataExport, setDataExport ] = useState({
+		edu: [],
+		exp: [],
+		ref: [],
+		skill: []
 	});
 
 	const changeOnClick = (e) => {
-		const value = e.target.value;
-		// const name = e.target.id;
-		setPersonal((values) => ({
-			...values,
-			[e.target.name]: value
+		const value = e.target.value; 
+		console.log(e.target.id, e.target.name)
+		setFormData((values) => ({
+			...formData,
+			[e.target.id]: {
+				...values[e.target.id],
+				[e.target.name]: value
+			} 
 		}));
-
-		setEducation((values) => ({
-			...values,
-			[e.target.name]: value
-		}));
-
-		setExperience((values) => ({
-			...values,
-			[e.target.name]: value
-		}));
-
-		setReferences((values) => ({
-			...values,
-			[e.target.name]: value
-		}));
-
-		setSkills((values) => ({
-			...values,
-			[e.target.name]: value
-		}));
-	};
-
-	
-
-	const handlePhoto = (e) => {
-		return null;
 	};
 
 	const onSubmitTask = (e) => {
-		/*e.preventDefault();
-	const id = e.target.id;
-	const name = e.target.name;
-	*/
-    e.preventDefault();
-		
-	}; /*
-   //const print = () => { 
+		e.preventDefault();
+		const id = e.target.id;
+		const name = e.target.name; 
+		console.log(id, name)
+		setDataExport((values) => ({
+			...values,
+			[id]: dataExport[id].concat(formData[id])
+		})); 
+		//setFormData(initialState)
+		e.target.reset()
+	};
+
+	const print = () => {
 		window.print();
-	} */
+	} 
 
-	/*
-	
-	handleChange = (e) => {
-		const value = e.target.value;
-		const name = e.target.id;
-		this.setState({
-			[name]: {
-				...this.state[name],
-				[e.target.name]: value
-			}
-		});
-	}; 
 
-	handlePhoto = (e) => {
+	const handlePhoto = (e) => {
 		const files = e.target.files[0];
 		const name = e.target.id;
 		console.log(files);
 		console.log(name);
-		this.setState({
-			[name]: {
-				...this.state[name],
-				[e.target.name]: URL.createObjectURL(files),
-			}
-		});
-	};
+		setFormData((values) => ({
+			...formData,
+			[e.target.id]: {
+				...values[e.target.id],
+				[e.target.name]: URL.createObjectURL(files)
+			} 
+		}));
+	}; 
+	
 
-	onSubmitTask = (e) => {
-		e.preventDefault();
-		const id = e.target.id;
-		const name = e.target.name;
+	const { firstName, lastName, title, address, description, photo, phone, email } = formData;
 
-		this.setState({
-			[name]: this.state[name].concat(this.state[id]),
-			[id]: {
-				...this.state[id],
-				[name]: ''
-			}
-		});
-	};
-	*/ 
-	const {
-		firstName,
-		lastName,
-		title,
-		address,
-		description,
-		photo,
-		phone,
-		email
-	} = personal;
+	const { university, degree, subject, fromYear, toYear } = formData;
 
-	//const { university, degree, subject, fromYear, toYear } = education;
+	const { position, company, dateFrom, dateTo } = formData;
 
-	const { position, company, dateFrom, dateTo } = experience;
+	const { fullName, refPosition, refCompany, refEmail } = formData;
 
-	const { fullName, refPosition, refCompany, refEmail } = references;
-
-	const { category, subjectSkill, level } = skills;
+	const { category, subjectSkill, level } = formData;
 
 	return (
-		<main suppressContentEditableWarning={true}>
+		<main>
 			<Header />
 			<div className="container">
 				<div className="forms">
@@ -165,7 +123,7 @@ const useApp = (props) => {
 							<form>
 								<input
 									name="firstName"
-									id="Personal"
+									id="personal"
 									value={firstName}
 									onChange={changeOnClick}
 									type="text"
@@ -174,7 +132,7 @@ const useApp = (props) => {
 								/>
 								<input
 									name="lastName"
-									id="Personal"
+									id="personal"
 									value={lastName}
 									type="text"
 									onChange={changeOnClick}
@@ -183,15 +141,24 @@ const useApp = (props) => {
 								/>
 								<input
 									name="title"
-									id="Personal"
+									id="personal"
 									value={title}
 									type="text"
 									onChange={changeOnClick}
 									placeholder="Title"
+								/> 
+								<input
+									name="photo"
+									label="photo"
+									id="personal"
+									value={photo}
+									type="file"
+									accept="image/"
+									onChange={handlePhoto}
 								/>
 								<input
 									name="address"
-									id="Personal"
+									id="personal"
 									value={address}
 									type="text"
 									onChange={changeOnClick}
@@ -201,7 +168,7 @@ const useApp = (props) => {
 
 								<input
 									name="phone"
-									id="Personal"
+									id="personal"
 									value={phone}
 									type="text"
 									onChange={changeOnClick}
@@ -210,7 +177,7 @@ const useApp = (props) => {
 								/>
 								<input
 									name="email"
-									id="Personal"
+									id="personal"
 									value={email}
 									type="email"
 									onChange={changeOnClick}
@@ -218,7 +185,7 @@ const useApp = (props) => {
 								/>
 								<textarea
 									name="description"
-									id="Personal"
+									id="personal"
 									value={description}
 									type="text"
 									onChange={changeOnClick}
@@ -230,11 +197,11 @@ const useApp = (props) => {
 					</div>
 					<div className="educationInput">
 						<h1>Education:</h1>
-						<form id="edu" name="education" onSubmit={onSubmitTask}>
+						<form className="formEdu" id="edu" name="education" onSubmit={onSubmitTask}>
 							<input
 								name="university"
 								id="edu"
-								value={education.university}
+								value={university}
 								type="text"
 								onChange={changeOnClick}
 								placeholder="University"
@@ -242,7 +209,7 @@ const useApp = (props) => {
 							<input
 								name="degree"
 								id="edu"
-								value={education.degree}
+								value={degree}
 								type="text"
 								onChange={changeOnClick}
 								placeholder="Degree"
@@ -250,7 +217,7 @@ const useApp = (props) => {
 							<input
 								name="subject"
 								id="edu"
-								value={education.subject}
+								value={subject}
 								type="text"
 								onChange={changeOnClick}
 								placeholder="Subject"
@@ -258,7 +225,7 @@ const useApp = (props) => {
 							<input
 								name="fromYear"
 								id="edu"
-								value={education.fromYear}
+								value={fromYear}
 								type="number"
 								min="1900"
 								max="2099"
@@ -269,7 +236,7 @@ const useApp = (props) => {
 							<input
 								name="toYear"
 								id="edu"
-								value={education.toYear}
+								value={toYear}
 								type="number"
 								min="1900"
 								max="2099"
@@ -411,81 +378,40 @@ const useApp = (props) => {
 							</button>
 						</form>
 					</div>
-					<button className="pdf" type="button" value="Print" onClick={'print'}>
+					<button className="pdf" type="button" value="Print" onClick={print}>
 						Generate PDF
 					</button>
-				</div> 
+				</div>
 				<div className="cv">
-						<div className="columnOne">
-							<Photo photo={personal.photo} />
-							<div className="education">
-								<h4>Education</h4>
-								<Education education={education} />
-								<button className="educationBtn">Edit</button>
-							</div>
-							<div className="references">
-								<h4>References</h4>
-								<References references={references} />
-							</div>
-							<div className="contact">
-								<h4>Contact</h4>
-								<Contact contacts={personal} />
-							</div>
+					<div className="columnOne">
+						<Photo photo={formData.personal.photo} />
+						<div className="education">
+							<h4>Education</h4>
+							<Education education={dataExport.edu} />
+							<button className="educationBtn">Edit</button>
 						</div>
-
-						<div className="columnTwo">
-							<Personal info={personal} />
-							<h4 className="workExp">Work experience</h4>
-							<Experience experience={experience} />
-							<h4 className="workExp">Skills</h4>
-							<Skills skills={skills} />
+						<div className="references">
+							<h4>References</h4>
+							<References references={dataExport.ref} />
+						</div>
+						<div className="contact">
+							<h4>Contact</h4>
+							<Contact contacts={formData.personal} />
 						</div>
 					</div>
-			</div> 
-			
 
+					<div className="columnTwo">
+						<Personal personal={formData.personal} />
+						<h4 className="workExp">Work experience</h4>
+						<Experience experience={dataExport.exp} />
+						<h4 className="workExp">Skills</h4>
+						<Skills skills={dataExport.skill} />
+					</div>
+				</div>
+			</div>
 		</main>
 	);
 };
 
 export default useApp;
 
-/*
-	<div className="cv">
-						<div className="columnOne">
-							<Photo photo={personal.photo} />
-							<div className="education">
-								<h4>Education</h4>
-								<Education education={education} />
-								<button className="educationBtn">Edit</button>
-							</div>
-							<div className="references">
-								<h4>References</h4>
-								<References references={references} />
-							</div>
-							<div className="contact">
-								<h4>Contact</h4>
-								<Contact contacts={personal} />
-							</div>
-						</div>
-
-						<div className="columnTwo">
-							<Personal info={personal} />
-							<h4 className="workExp">Work experience</h4>
-							<Experience experience={experience} />
-							<h4 className="workExp">Skills</h4>
-							<Skills skills={skills} />
-						</div>
-					</div>
-
-
-					<input
-									name="photo"
-									label="photo"
-									id="personal"
-									value={photo}
-									type="file"
-									accept="image/"
-									onChange={handlePhoto}
-								/>
-*/
