@@ -45,7 +45,7 @@ const initialState = {
 		subjectSkill: '',
 		level: ''
 	}
-}
+};
 
 const useApp = (props) => {
 	const [ formData, setFormData ] = useState(initialState);
@@ -58,34 +58,33 @@ const useApp = (props) => {
 	});
 
 	const changeOnClick = (e) => {
-		const value = e.target.value; 
-		console.log(e.target.id, e.target.name)
+		const value = e.target.value;
+		console.log(e.target.id, e.target.name);
 		setFormData((values) => ({
 			...formData,
 			[e.target.id]: {
 				...values[e.target.id],
 				[e.target.name]: value
-			} 
+			}
 		}));
 	};
 
 	const onSubmitTask = (e) => {
 		e.preventDefault();
 		const id = e.target.id;
-		const name = e.target.name; 
-		console.log(id, name)
+		const name = e.target.name;
+		console.log(id, name);
 		setDataExport((values) => ({
 			...values,
 			[id]: dataExport[id].concat(formData[id])
-		})); 
+		}));
 		//setFormData(initialState)
-		e.target.reset()
+		e.target.reset();
 	};
 
 	const print = () => {
 		window.print();
-	} 
-
+	};
 
 	const handlePhoto = (e) => {
 		const files = e.target.files[0];
@@ -97,10 +96,9 @@ const useApp = (props) => {
 			[e.target.id]: {
 				...values[e.target.id],
 				[e.target.name]: URL.createObjectURL(files)
-			} 
+			}
 		}));
-	}; 
-	
+	};
 
 	const { firstName, lastName, title, address, description, photo, phone, email } = formData;
 
@@ -146,7 +144,7 @@ const useApp = (props) => {
 									type="text"
 									onChange={changeOnClick}
 									placeholder="Title"
-								/> 
+								/>
 								<input
 									name="photo"
 									label="photo"
@@ -414,4 +412,3 @@ const useApp = (props) => {
 };
 
 export default useApp;
-
