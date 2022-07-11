@@ -145,15 +145,18 @@ const useApp = (props) => {
 									onChange={changeOnClick}
 									placeholder="Title"
 								/>
+								<label className="upload">
+									Upload Photo 
+									<span className="icon" />
 								<input
 									name="photo"
 									label="photo"
 									id="personal"
 									value={photo}
 									type="file"
-									accept="image/"
+									accept="image/png, image/gif, image/jpeg, image/jpg"
 									onChange={handlePhoto}
-								/>
+								/></label>
 								<input
 									name="address"
 									id="personal"
