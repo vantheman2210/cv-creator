@@ -185,6 +185,54 @@ input[type="file"] {
 	height: 16rem;
 }
 
+input[type="file"] {
+	display: none;
+}
+
+.upload {  
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	width: fit-content;
+	align-items: center;
+	gap: 1rem;
+	padding: 5px;
+	border-radius: 5px; 
+	background-color: white;
+	border: 2px solid gold;
+	font-weight: bold; 
+	font-size: 12px;
+	letter-spacing: 3px;
+	text-align: center; 
+	cursor: pointer;
+}  
+
+.icon { 
+	background: url('./Images/frame.png');
+	background-size: 100% 100%; 
+	height: 2rem;
+	width: 2rem;
+	display: block;
+} 
+
+.icon { 
+	background: url('./Images/frame.png');
+	background-size: 100% 100%; 
+	height: 2rem;
+	width: 2rem;
+	display: block;
+}
+
+.upload:hover {
+	background-color: rgb(241, 241, 241);
+}
+
+.upload:active {
+	background-color: rgb(201, 201, 201);
+	box-shadow: 1px 1px 3px 4px rgb(228, 228, 228);
+	transform: translateY(4px);
+}
+
+
 .education {
 	display: grid;
 	padding: 1rem;
